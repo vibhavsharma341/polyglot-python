@@ -35,9 +35,16 @@ def is_prime(num):
     return True
 
 
-@app.route('/double_prime/<int:num>', methods=['GET'])
+@app.route('/double_prime/<string:num>', methods=['GET'])
 def double_prime(num):
-    return jsonify({"input": num, "response": check_double_prime(num)})
+    try:
+        num = int(num)
+        response = check_double_prime(num)
+    except ValueError:
+        response = "Not a valid integer"
+    except BaseException as e:
+        response = "Error : " + str(e)
+    return jsonify({"input": num, "response": response})
 
 
 if __name__ == '__main__':
