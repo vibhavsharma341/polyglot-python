@@ -10,8 +10,8 @@ def check_double_prime(num):
 
     # checking for left sided prime condition
     var = num
-    while var is 0:
-        var = num/10
+    while var is not 0:
+        var = int(var/10)
         if not is_prime(var):
             break
     if var is 0:
@@ -19,7 +19,7 @@ def check_double_prime(num):
 
     # checking for right sided prime condition
     var = 10
-    while num/var is 0:
+    while int(num/var) is not 0:
         if not is_prime(num % var):
             return False
         var = var * 10
